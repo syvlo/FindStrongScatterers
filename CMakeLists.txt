@@ -11,6 +11,7 @@ include_directories(/cal/homes/lobry/Programs/include/)
 
 add_executable(${BIN_DIR}/findStrongS
   ${SRC_DIR}/main.cc
+  ${SRC_DIR}/utils.cc
 )
 
 target_link_libraries (${BIN_DIR}/findStrongS
