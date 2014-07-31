@@ -7,7 +7,7 @@
 #include <highgui.h>
 
 #include "utils.hh"
-
+#include "integralImage.hh"
 
 int main(int argc, char* argv[])
 {
@@ -33,4 +33,9 @@ int main(int argc, char* argv[])
 			  << "- Output: " << outputFileName << std::endl
 			  << "- Threshold: " << thresh << std::endl
 			  << "- Window size: " << s << std::endl;
+
+	cv::Mat SARImage = ReadImw(inputFileName.c_str());
+
+	cv::Mat integralImage (SARImage.size(), CV_64F);
+	integralImage = computeIntegralImage<double, unsigned short>(integralImage, SARImage);
 }
