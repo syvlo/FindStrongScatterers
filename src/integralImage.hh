@@ -13,7 +13,7 @@
  */
 template<typename OUT, typename IN>
 cv::Mat
-computeIntegralImage(cv::Mat integral, cv::Mat input);
+computeIntegralImage(cv::Mat integral, const cv::Mat input);
 
 
 /**

@@ -5,7 +5,7 @@
 
 template<typename OUT, typename IN>
 cv::Mat
-computeIntegralImage(cv::Mat integral, cv::Mat input)
+computeIntegralImage(cv::Mat integral, const cv::Mat input)
 {
 	cv::Mat s (integral.size(), integral.type());
 
@@ -13,7 +13,7 @@ computeIntegralImage(cv::Mat integral, cv::Mat input)
 		for (int j = 0; j < integral.size().width; ++j)
 		{
 			if (j > 0)
-				s.at<OUT>(i,j) = s.at<OUT>(i - 1, j) + (OUT)input.at<IN>(i, j);
+				s.at<OUT>(i,j) = s.at<OUT>(i, j - 1) + (OUT)input.at<IN>(i, j);
 			else
 				s.at<OUT>(i,j) = (OUT)input.at<IN>(i, j);
 
@@ -21,6 +21,7 @@ computeIntegralImage(cv::Mat integral, cv::Mat input)
 				integral.at<OUT>(i, j) = integral.at<OUT>(i - 1, j) + s.at<OUT>(i,j);
 			else
 				integral.at<OUT>(i, j) = s.at<OUT>(i,j);
+
 		}
 
 	return integral;
